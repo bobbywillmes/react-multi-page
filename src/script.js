@@ -1,25 +1,55 @@
-const element = <h1 className="greeting">Hello world!</h1>
+const Navbar = () => {
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <a className="navbar-brand" href="">Navbar</a>
+    </nav>
+  );
+}
 
-const Temperature = (props) => {
-  console.log('props: ', props);
-  return <p>The current temperature in {props.city} is {props.degree} degree {props.unit}</p>;
-};
+const Sidebar = () => {
+  return (
+    <div className="d-none d-md-block col-md-3">
+      <div className="border border-primary py-4 px-3">
+        Sidebar
+      </div>
+    </div>
+  )
+}
 
-const tempElement = <Temperature degree={25} unit="celsius" />;
+const Footer = () => {
+  return (
+    <div className="border-top p-2">
+      Bobby Willmes © 2021
+    </div>
+  )
+}
+
+const Template = (props) => {
+  return (
+    <React.Fragment>
+      <Navbar />
+      <div className="container py-4">
+        <div className="row">
+          <div className="col-12 col-md-9">
+            {props.children}
+          </div>
+          <Sidebar />
+        </div>
+      </div>
+      <Footer />
+    </React.Fragment>
+  )
+}
 
 const App = () => {
   return (
-    <div>
-      <Temperature city="London" degree={20} unit="celsius" />
-      <Temperature city="New York" degree={25} unit="celsius" />
-      <Temperature city="Dubai" degree={32} unit="celsius" />
-    </div>
+    <Template>
+      <h1>Main content</h1>
+    </Template>
   );
 }
 
 ReactDOM.render(
-  // element,
-  // tempElement,
   <App />,
   document.getElementById('root')
 );

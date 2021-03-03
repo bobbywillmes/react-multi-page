@@ -1,36 +1,68 @@
-var element = React.createElement(
-  "h1",
-  { className: "greeting" },
-  "Hello world!"
-);
-
-var Temperature = function Temperature(props) {
-  console.log('props: ', props);
+var Navbar = function Navbar() {
   return React.createElement(
-    "p",
-    null,
-    "The current temperature in ",
-    props.city,
-    " is ",
-    props.degree,
-    " degree ",
-    props.unit
+    "nav",
+    { className: "navbar navbar-expand-lg navbar-light bg-light" },
+    React.createElement(
+      "a",
+      { className: "navbar-brand", href: "" },
+      "Navbar"
+    )
   );
 };
 
-var tempElement = React.createElement(Temperature, { degree: 25, unit: "celsius" });
+var Sidebar = function Sidebar() {
+  return React.createElement(
+    "div",
+    { className: "d-none d-md-block col-md-3" },
+    React.createElement(
+      "div",
+      { className: "border border-primary py-4 px-3" },
+      "Sidebar"
+    )
+  );
+};
+
+var Footer = function Footer() {
+  return React.createElement(
+    "div",
+    { className: "border-top p-2" },
+    "Bobby Willmes \xA9 2021"
+  );
+};
+
+var Template = function Template(props) {
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(Navbar, null),
+    React.createElement(
+      "div",
+      { className: "container py-4" },
+      React.createElement(
+        "div",
+        { className: "row" },
+        React.createElement(
+          "div",
+          { className: "col-12 col-md-9" },
+          props.children
+        ),
+        React.createElement(Sidebar, null)
+      )
+    ),
+    React.createElement(Footer, null)
+  );
+};
 
 var App = function App() {
   return React.createElement(
-    "div",
+    Template,
     null,
-    React.createElement(Temperature, { city: "London", degree: 20, unit: "celsius" }),
-    React.createElement(Temperature, { city: "New York", degree: 25, unit: "celsius" }),
-    React.createElement(Temperature, { city: "Dubai", degree: 32, unit: "celsius" })
+    React.createElement(
+      "h1",
+      null,
+      "Main content"
+    )
   );
 };
 
-ReactDOM.render(
-// element,
-// tempElement,
-React.createElement(App, null), document.getElementById('root'));
+ReactDOM.render(React.createElement(App, null), document.getElementById('root'));
