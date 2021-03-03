@@ -1,5 +1,7 @@
 # Basic React Multi Page Site
 
+My first project using React & Babel.
+
 Using React to create HTML elements dynamically in JS, and Babel to compile the JS to work in the browser.
 
 Babel converts files in the src/ directory to browser-compatible JS, and places them in the root directory. 
