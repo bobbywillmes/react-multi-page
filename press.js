@@ -5,9 +5,8 @@ var App = function App() {
     React.createElement(
       'h1',
       null,
-      'Main content'
+      'Press page'
     )
   );
 };
-
 ReactDOM.render(React.createElement(App, null), document.getElementById('root'));
